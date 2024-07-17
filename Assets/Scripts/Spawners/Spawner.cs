@@ -23,21 +23,14 @@ public class Spawner : MonoBehaviour
         _spawnObject = SpawnType == SpawnTypes.PLAYER ? _playerObject : _opponentObject;
     }
 
-    private void Start()
-    {
-        InstantiateObject();
-    }
-
     private void OnDrawGizmos()
     {
         Gizmos.color = SpawnType == SpawnTypes.PLAYER ? Color.green : Color.red;
         Gizmos.DrawWireCube(transform.position, new Vector3(1, 1, 1));
     }
 
-    public void InstantiateObject()
+    public GameObject InstantiateObject()
     {
-        GameObject spawn = Instantiate(_spawnObject, transform.position, Quaternion.identity);
-        if (SpawnType == SpawnTypes.OPPONENT)
-            spawn.GetComponent<OpponentController>().SetSpeed();
+        return Instantiate(_spawnObject, transform.position, Quaternion.identity, transform);
     }
 }

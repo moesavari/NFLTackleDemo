@@ -7,14 +7,18 @@ public class OpponentController : MonoBehaviour
     private float _moveSpeed;
     private Transform _playerObject;
 
+    private GameController _gameController;
+
     private void Start()
     {
-        _playerObject = GameObject.FindWithTag("Player").transform;
+        _gameController = GameController.Instance;
+        _playerObject = _gameController.PlayerObject.transform;
     }
 
     private void Update()
     {
-        MoveOpponent(GetAngleOfPursuit());
+        if(_gameController.PlayerMoved)
+            MoveOpponent(GetAngleOfPursuit());
     }
 
     public void SetSpeed()

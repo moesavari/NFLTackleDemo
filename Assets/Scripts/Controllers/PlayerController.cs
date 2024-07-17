@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer(Vector3 movement)
     {
+        GameController.Instance.PlayerMoved = true;
+
         transform.Translate(movement, Space.Self);
     }
 
