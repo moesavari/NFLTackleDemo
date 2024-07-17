@@ -7,10 +7,15 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Camera _playerCamera;
 
+    public bool CanMove = false;
+
     private void Update()
     {
-        ProcessPlayerInput();
-        RotateCamera();
+        if(CanMove)
+        {
+            ProcessPlayerInput();
+            RotateCamera();
+        }
     }
 
     private void ProcessPlayerInput()

@@ -21,6 +21,12 @@ public class OpponentController : MonoBehaviour
             MoveOpponent(GetAngleOfPursuit());
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+            _gameController.EndGame(false);
+    }
+
     public void SetSpeed()
     {
         _moveSpeed = Random.Range(_minSpeed, _maxSpeed);
