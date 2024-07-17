@@ -14,6 +14,7 @@ public class GameController : MonoSingleton<GameController>
 
     private void Start()
     {
+        Cursor.visible = true;
         _oppSpawnController = OpponentSpawnController.Instance;
         _canvasController = CanvasController.Instance;
 
@@ -46,6 +47,7 @@ public class GameController : MonoSingleton<GameController>
 
     public void SetPlayerMovement(bool canMove)
     {
+        Cursor.visible = !canMove;
         _playerController.CanMove = canMove;
     }
 

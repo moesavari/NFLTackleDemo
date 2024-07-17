@@ -9,6 +9,13 @@ public class PlayerController : MonoBehaviour
 
     public bool CanMove = false;
 
+    private GameController _gameController;
+
+    private void Start()
+    {
+        _gameController = GameController.Instance;
+    }
+
     private void Update()
     {
         if(CanMove)
@@ -16,6 +23,12 @@ public class PlayerController : MonoBehaviour
             ProcessPlayerInput();
             RotateCamera();
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Finish")
+            _gameController.EndGame(true);
     }
 
     private void ProcessPlayerInput()
@@ -40,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer(Vector3 movement)
     {
-        GameController.Instance.PlayerMoved = true;
+        _gameController.PlayerMoved = true;
 
         transform.Translate(movement, Space.Self);
     }
