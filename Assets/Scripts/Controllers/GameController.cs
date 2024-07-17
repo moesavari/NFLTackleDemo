@@ -1,3 +1,5 @@
+///Controller used to apply game rules and conditions. Can instantiate and reset game when needed
+
 using UnityEngine;
 
 public class GameController : MonoSingleton<GameController>
@@ -29,6 +31,11 @@ public class GameController : MonoSingleton<GameController>
         }
     }
 
+    /// <summary>
+    /// Completes the game by disabling player movement and showing end screen
+    /// playerWon bool helps by denoting which end screen to show
+    /// </summary>
+    /// <param name="playerWon"></param>
     public void EndGame(bool playerWon)
     {
         PlayerMoved = false;
@@ -47,16 +54,17 @@ public class GameController : MonoSingleton<GameController>
 
     public void SetPlayerMovement(bool canMove)
     {
+        //Toggling cursor visibility based on whether the player can move
         Cursor.visible = !canMove;
         _playerController.CanMove = canMove;
     }
 
     private void ResetGame()
     {
+        _oppSpawnController.ResetSpwners();
+
         PlayerMoved = false;
         SetPlayerMovement(false);
-
-        _oppSpawnController.ResetSpwners();
         PlayerObject.transform.position = _playerSpawner.transform.position;
         PlayerObject.transform.rotation = _playerSpawner.transform.rotation;
 

@@ -1,3 +1,5 @@
+///Controller script to assist with toggling canvas visibility
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +27,10 @@ public class CanvasController : MonoSingleton<CanvasController>
         ShowWelcomeScreen();
     }
 
+    /// <summary>
+    /// Shows the win or lose screen based on what enum is passed in
+    /// </summary>
+    /// <param name="endScreen"></param>
     public void ShowEndScreen(EndScreen endScreen)
     {
         switch(endScreen)

@@ -1,3 +1,5 @@
+/// Controller to assist with player movement and camera rotation
+
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
