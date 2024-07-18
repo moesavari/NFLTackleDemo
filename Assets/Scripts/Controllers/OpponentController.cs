@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class OpponentController : MonoBehaviour
 {
-    [SerializeField] private float _minSpeed, _maxSpeed;
+    [SerializeField] private float _minSpeed, _maxSpeed, _rotationSpeed;
     [SerializeField] private Text _nameField;
 
     private float _moveSpeed;
@@ -21,8 +21,17 @@ public class OpponentController : MonoBehaviour
 
     private void Update()
     {
+        Vector3 playerDirection = _playerObject.position - transform.position;
+        playerDirection.y = 0;
+
+        if(playerDirection != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(playerDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _rotationSpeed);
+        }
+
         if(_gameController.PlayerMoved)
-            MoveOpponent(GetAngleOfPursuit());
+            MoveOpponent(playerDirection.normalized);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -49,20 +58,11 @@ public class OpponentController : MonoBehaviour
     }
 
     /// <summary>
-    /// Returns the position between the player and the opponent object
-    /// </summary>
-    /// <returns></returns>
-    private Vector3 GetAngleOfPursuit()
-    {
-        return (_playerObject.position - transform.position).normalized;
-    }
-
-    /// <summary>
     /// Moves the opponent object towards the player
     /// </summary>
     /// <param name="direction"></param>
     private void MoveOpponent(Vector3 direction)
     {
-        transform.Translate(direction * _moveSpeed * Time.deltaTime, Space.Self);
+        transform.Translate(direction * _moveSpeed * Time.deltaTime, Space.World);
     }
 }

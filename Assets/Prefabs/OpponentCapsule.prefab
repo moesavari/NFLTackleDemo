@@ -319,6 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minSpeed: 5
   _maxSpeed: 11.5
+  _rotationSpeed: 5
   _nameField: {fileID: 8807393744677008528}
 --- !u!54 &8028909520730032005
 Rigidbody:
