@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _mouseSensitivity;
 
+    [SerializeField] private Rigidbody _playerBody;
+
     [SerializeField] private Camera _playerCamera;
 
     public bool CanMove = false;
@@ -27,29 +29,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Finish")
-            _gameController.EndGame(true);
-    }
-
     private void ProcessPlayerInput()
     {
-        float horizontal = 0;
-        float vertical = 0;
-
-        if (Input.GetKey(KeyCode.W))
-            vertical += 1;
-        if (Input.GetKey(KeyCode.S))
-            vertical -= 1;
-        if (Input.GetKey(KeyCode.D))
-            horizontal += 1;
-        if (Input.GetKey(KeyCode.A))
-            horizontal -= 1;
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(horizontal, 0, vertical).normalized * _moveSpeed * Time.deltaTime;
 
-        if(movement != Vector3.zero)
+        if (movement != Vector3.zero)
             MovePlayer(movement);
     }
 
@@ -57,7 +44,21 @@ public class PlayerController : MonoBehaviour
     {
         _gameController.PlayerMoved = true;
 
-        transform.Translate(movement, Space.Self);
+        // Calculate the camera's forward and right directions
+        Vector3 camForward = _playerCamera.transform.forward;
+        Vector3 camRight = _playerCamera.transform.right;
+
+        // Flatten the camera's forward and right vectors to the XZ plane
+        camForward.y = 0;
+        camRight.y = 0;
+
+        camForward.Normalize();
+        camRight.Normalize();
+
+        Vector3 moveDirection = camForward * movement.z + camRight * movement.x;
+
+        // Use Rigidbody to move the player, considering physics and collisions
+        _playerBody.MovePosition(_playerBody.position + moveDirection);
     }
 
     private void RotateCamera()

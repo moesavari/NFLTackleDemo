@@ -14,6 +14,7 @@ public class CanvasController : MonoSingleton<CanvasController>
     [SerializeField] private GameObject _welcomeScreen;
     [SerializeField] private GameObject _winScreen;
     [SerializeField] private GameObject _loseScreen;
+    [SerializeField] private GameObject _outOfBoundsScreen;
 
     [SerializeField] private Button _playButton;
 
@@ -48,6 +49,7 @@ public class CanvasController : MonoSingleton<CanvasController>
     {
         _winScreen.SetActive(false);
         _loseScreen.SetActive(false);
+        _outOfBoundsScreen.SetActive(false);
 
         _welcomeScreen.SetActive(true);
     }
@@ -56,5 +58,10 @@ public class CanvasController : MonoSingleton<CanvasController>
     {
         _welcomeScreen.SetActive(false);
         _gameController.SetPlayerMovement(true);
+    }
+
+    public void ShowOutOfBoundsScreen()
+    {
+        _outOfBoundsScreen.SetActive(true);
     }
 }

@@ -44,6 +44,14 @@ public class GameController : MonoSingleton<GameController>
         _canvasController.ShowEndScreen(playerWon ? CanvasController.EndScreen.WIN : CanvasController.EndScreen.LOSE);
     }
 
+    public void ShowOutOfBounds()
+    {
+        PlayerMoved = false;
+        SetPlayerMovement(false);
+
+        _canvasController.ShowOutOfBoundsScreen();
+    }
+
     public void InitializeGame()
     {
         PlayerObject = _playerSpawner.InstantiateObject();
