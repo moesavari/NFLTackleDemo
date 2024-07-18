@@ -348,6 +348,7 @@ MonoBehaviour:
   SpawnType: 1
   _playerObject: {fileID: 0}
   _opponentObject: {fileID: 7222210928154906122, guid: 110c953102e75e44cae9f1973681993d, type: 3}
+  PositionType: 2
 --- !u!1 &208650717
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +418,7 @@ MonoBehaviour:
   SpawnType: 1
   _playerObject: {fileID: 0}
   _opponentObject: {fileID: 7222210928154906122, guid: 110c953102e75e44cae9f1973681993d, type: 3}
+  PositionType: 3
 --- !u!1 &376323793
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,6 +632,7 @@ MonoBehaviour:
   SpawnType: 1
   _playerObject: {fileID: 0}
   _opponentObject: {fileID: 7222210928154906122, guid: 110c953102e75e44cae9f1973681993d, type: 3}
+  PositionType: 2
 --- !u!1 &614192633
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,6 +702,7 @@ MonoBehaviour:
   SpawnType: 1
   _playerObject: {fileID: 0}
   _opponentObject: {fileID: 7222210928154906122, guid: 110c953102e75e44cae9f1973681993d, type: 3}
+  PositionType: 0
 --- !u!1 &663703705
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,6 +982,7 @@ MonoBehaviour:
   SpawnType: 1
   _playerObject: {fileID: 0}
   _opponentObject: {fileID: 7222210928154906122, guid: 110c953102e75e44cae9f1973681993d, type: 3}
+  PositionType: 3
 --- !u!1 &821047743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,6 +1052,7 @@ MonoBehaviour:
   SpawnType: 1
   _playerObject: {fileID: 0}
   _opponentObject: {fileID: 7222210928154906122, guid: 110c953102e75e44cae9f1973681993d, type: 3}
+  PositionType: 0
 --- !u!1 &1006416790
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,6 +1122,7 @@ MonoBehaviour:
   SpawnType: 1
   _playerObject: {fileID: 0}
   _opponentObject: {fileID: 7222210928154906122, guid: 110c953102e75e44cae9f1973681993d, type: 3}
+  PositionType: 4
 --- !u!1 &1020412354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,6 +1447,7 @@ MonoBehaviour:
   SpawnType: 1
   _playerObject: {fileID: 0}
   _opponentObject: {fileID: 7222210928154906122, guid: 110c953102e75e44cae9f1973681993d, type: 3}
+  PositionType: 2
 --- !u!1 &1173465250
 GameObject:
   m_ObjectHideFlags: 0
@@ -1869,6 +1877,7 @@ MonoBehaviour:
   SpawnType: 1
   _playerObject: {fileID: 0}
   _opponentObject: {fileID: 7222210928154906122, guid: 110c953102e75e44cae9f1973681993d, type: 3}
+  PositionType: 1
 --- !u!1 &1650338467
 GameObject:
   m_ObjectHideFlags: 0
@@ -2639,6 +2648,7 @@ MonoBehaviour:
   SpawnType: 0
   _playerObject: {fileID: 5092123104495869630, guid: d0583cea728c37842ab8e538c78ca8d3, type: 3}
   _opponentObject: {fileID: 0}
+  PositionType: 0
 --- !u!1 &1985919763
 GameObject:
   m_ObjectHideFlags: 0
@@ -2708,6 +2718,7 @@ MonoBehaviour:
   SpawnType: 1
   _playerObject: {fileID: 0}
   _opponentObject: {fileID: 7222210928154906122, guid: 110c953102e75e44cae9f1973681993d, type: 3}
+  PositionType: 1
 --- !u!1 &2006772039
 GameObject:
   m_ObjectHideFlags: 0
@@ -2777,6 +2788,7 @@ MonoBehaviour:
   SpawnType: 1
   _playerObject: {fileID: 0}
   _opponentObject: {fileID: 7222210928154906122, guid: 110c953102e75e44cae9f1973681993d, type: 3}
+  PositionType: 4
 --- !u!1 &2020949906
 GameObject:
   m_ObjectHideFlags: 0

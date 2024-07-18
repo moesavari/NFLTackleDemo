@@ -20,9 +20,46 @@ public class OpponentSpawnController : MonoSingleton<OpponentSpawnController>
         foreach(Spawner spawner in _spawners)
         {
             GameObject obj = spawner.InstantiateObject();
-            obj.GetComponent<OpponentController>().SetSpeed();
+
+            OpponentController opp = obj.GetComponent<OpponentController>();
+
+            opp.SetSpeed();
+            opp.SetName(GetNameByPosition(spawner));
+
             _opponentObjects.Add(obj);
         }
+    }
+
+    /// <summary>
+    /// This function returns a randomly picked name from the list of player names available
+    /// Based on where the spwaner is positioned, it will pick from the appropriate list
+    /// </summary>
+    /// <param name="spawner"></param>
+    /// <returns></returns>
+    private string GetNameByPosition(Spawner spawner)
+    {
+        string name = null;
+
+        switch(spawner.PositionType)
+        {
+            case Spawner.PositionTypes.CORNERBACK:
+                name = PlayerData.CornerbackPlayers[Random.Range(0, PlayerData.CornerbackPlayers.Count)];
+                break;
+            case Spawner.PositionTypes.END:
+                name = PlayerData.EndPlayers[Random.Range(0, PlayerData.EndPlayers.Count)];
+                break;
+            case Spawner.PositionTypes.LINEBACKER:
+                name = PlayerData.LinebackerPlayers[Random.Range(0, PlayerData.LinebackerPlayers.Count)];
+                break;
+            case Spawner.PositionTypes.SAFETY:
+                name = PlayerData.SafetyPlayers[Random.Range(0, PlayerData.SafetyPlayers.Count)];
+                break;
+            case Spawner.PositionTypes.TACKLE:
+                name = PlayerData.TacklePlayers[Random.Range(0, PlayerData.TacklePlayers.Count)];
+                break;
+        }
+
+        return name;
     }
 
     /// <summary>

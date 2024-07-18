@@ -12,6 +12,15 @@ public class Spawner : MonoBehaviour
 
     public SpawnTypes SpawnType;
 
+    public enum PositionTypes
+    {
+        END,
+        TACKLE,
+        LINEBACKER,
+        CORNERBACK,
+        SAFETY,
+    }
+
     /// <summary>
     /// HideIf functions are from Stulk3's HideIf package. 
     /// </summary>
@@ -20,6 +29,9 @@ public class Spawner : MonoBehaviour
 
     [SerializeField, HideIfEnumValue("SpawnType", HideIf.NotEqual, (int)SpawnTypes.OPPONENT)]
     private GameObject _opponentObject;
+
+    [SerializeField, HideIfEnumValue("SpawnType", HideIf.NotEqual, (int)SpawnTypes.OPPONENT)]
+    public PositionTypes PositionType;
 
     private GameObject _spawnObject;
 

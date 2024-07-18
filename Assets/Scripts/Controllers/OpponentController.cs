@@ -1,10 +1,12 @@
 ///Controller script created to help set up opponent movement and trigger state
 
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OpponentController : MonoBehaviour
 {
     [SerializeField] private float _minSpeed, _maxSpeed;
+    [SerializeField] private Text _nameField;
 
     private float _moveSpeed;
     private Transform _playerObject;
@@ -25,7 +27,7 @@ public class OpponentController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.CompareTag("Player"))
             _gameController.EndGame(false);
     }
 
@@ -35,6 +37,15 @@ public class OpponentController : MonoBehaviour
     public void SetSpeed()
     {
         _moveSpeed = Random.Range(_minSpeed, _maxSpeed);
+    }
+
+    /// <summary>
+    /// Sets a name picked by the opponent spawn controller based on the spawn position
+    /// </summary>
+    /// <param name="name"></param>
+    public void SetName(string name)
+    {
+        _nameField.text = name;
     }
 
     /// <summary>
